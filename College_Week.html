@@ -1,0 +1,76 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>STI Global City College Week</title>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>Student QR Code Generator</h1>
+      <p>Equip yourself with a QR Code to earn points while enjoying the college week!</p>
+      <br>
+    </div>
+    <div class="input-form">
+      <input type="text" class="student-id" placeholder="Student ID">
+      <input type="text" class="first-name" placeholder="First Name">
+      <input type="text" class="last-name" placeholder="Last Name">
+      <select name="course" id="course" placeholder="Course" selected="">
+        <option value="" disabled selected>Course</option>
+        <option value="ABM">ABM</option>
+        <option value="CCT">CCT</option>
+        <option value="CULY">CULY</option>
+        <option value="HUMSS">HUMSS</option>
+        <option value="ITMAWE">ITMAWE</option>
+        <option value="STEM">STEM</option>
+        <option value="TOP">TOP</option>
+        <option value="BSIT">BSIT</option>
+        <option value="BSCPE">BSCPE</option>
+        <option value="BSCS">BSCS</option>
+        <option value="BSBAOM">BSBAOM</option>
+        <option value="BSAIS">BSAIS</option>
+        <option value="BSHM">BSHM</option>
+        <option value="BSTM">BSTM</option>
+        <option value="BACOMM">BACOMM</option>
+      </select>
+      <input type="text" class="section" placeholder="Section">
+      <button class="generate-btn">Generate QR Code</button>
+    </div>
+    <div class="qr-code">
+      <img src="images/qrcode.png" class="qr-image">
+    </div>
+  </div>
+
+  <script>
+    var container = document.querySelector(".container");
+    var generateBtn = document.querySelector(".generate-btn");
+    var studentID = document.querySelector(".student-id");
+    var firstName = document.querySelector(".first-name");
+    var lastName = document.querySelector(".last-name");
+    var course = document.getElementById("course");
+    var section = document.querySelector(".section");
+    // var qrText = studentID + "," + lastName + ", " + firstName + "," + course + "," + section;
+    var qrImg = document.querySelector(".qr-image");
+
+    generateBtn.onclick = function () {      
+    var qrText = studentID.value + "," + lastName.value + ", " + firstName.value + "," + course.options[course.selectedIndex].text + "," + section.value;
+    console.log(qrText)
+    console.log(qrText)
+      if(qrText.length > 0){ 
+        generateBtn.disabled = true;
+        generateBtn.innerText = "Generating QR Code..."       
+        qrImg.src = "https://api.qrserver.com/v1/create-qr-code/?size=170x170&data="+qrText;
+        qrImg.onload = function () {
+          container.classList.add("active");
+          generateBtn.disabled = false;
+          generateBtn.innerText = "Generate QR Code";
+        }
+      }
+    }
+  </script>
+</body>
+</html>
