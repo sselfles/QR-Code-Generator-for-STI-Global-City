@@ -58,8 +58,6 @@
 
     generateBtn.onclick = function () {      
     var qrText = studentID.value + "," + firstName.value + " " + lastName.value + "," + course.options[course.selectedIndex].text + "," + section.value;
-    console.log(qrText)
-    console.log(qrText)
       if(qrText.length > 0){ 
         generateBtn.disabled = true;
         generateBtn.innerText = "Generating QR Code..."       
