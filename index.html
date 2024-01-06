@@ -57,7 +57,7 @@
     var qrImg = document.querySelector(".qr-image");
 
     generateBtn.onclick = function () {      
-    var qrText = studentID.value + "," + lastName.value + ", " + firstName.value + "," + course.options[course.selectedIndex].text + "," + section.value;
+    var qrText = studentID.value + "," + firstName.value + " " + lastName.value + "," + course.options[course.selectedIndex].text + "," + section.value;
     console.log(qrText)
     console.log(qrText)
       if(qrText.length > 0){ 
